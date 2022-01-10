@@ -31,7 +31,7 @@ namespace server.Repositories
             return Task.CompletedTask;
         }
 
-        public Task StoreAll(IList<Product> products)
+        public Task StoreAll(IEnumerable<Product> products)
         {
             data = new List<Product>(products);
             return Task.CompletedTask;
@@ -60,45 +60,45 @@ namespace server.Repositories
         {
             if (data == null || data.Count == 0)
             {
-                data = new List<Product>(new[]
+                StoreAll(new[]
+                {
+                    new Product
                     {
-                        new Product
-                        {
-                            Name = "Pizza",
-                            Category = Category.Food,
-                            Price = 10.99M
-                        },
-                        new Product
-                        {
-                            Name = "HotDog",
-                            Category = Category.Food,
-                            Price = 5.99M
-                        },
-                        new Product
-                        {
-                            Name = "Burger",
-                            Category = Category.Food,
-                            Price = 7.25M
-                        },
-                        new Product
-                        {
-                            Name = "Jeans",
-                            Category = Category.Clothing,
-                            Price = 15.99M
-                        },
-                        new Product
-                        {
-                            Name = "T-Shirt",
-                            Category = Category.Clothing,
-                            Price = 13.5M
-                        },
-                        new Product
-                        {
-                            Name = "Jacket",
-                            Category = Category.Clothing,
-                            Price = 24.99M
-                        }
-                    });
+                        Name = "Pizza",
+                        Category = Category.Food,
+                        Price = 10.99M
+                    },
+                    new Product
+                    {
+                        Name = "HotDog",
+                        Category = Category.Food,
+                        Price = 5.99M
+                    },
+                    new Product
+                    {
+                        Name = "Burger",
+                        Category = Category.Food,
+                        Price = 7.25M
+                    },
+                    new Product
+                    {
+                        Name = "Jeans",
+                        Category = Category.Clothing,
+                        Price = 15.99M
+                    },
+                    new Product
+                    {
+                        Name = "T-Shirt",
+                        Category = Category.Clothing,
+                        Price = 13.5M
+                    },
+                    new Product
+                    {
+                        Name = "Jacket",
+                        Category = Category.Clothing,
+                        Price = 24.99M
+                    }
+                }).GetAwaiter().GetResult();
             }
         }
     }

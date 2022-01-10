@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using server.Entities;
@@ -29,12 +28,12 @@ namespace server.Controllers
         
             if (!string.IsNullOrEmpty(filter))
             {
-                products = productService.FilterByCategory(products.ToList(), filter);
+                products = productService.FilterByCategory(products, filter);
             }
         
             if (discount != null)
             {
-                return productService.ApplyDiscount(products.ToList(), discount.Value);
+                return productService.ApplyDiscount(products, discount.Value);
             }
         
             return products;

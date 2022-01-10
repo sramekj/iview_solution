@@ -8,7 +8,7 @@ namespace server.Repositories
     public interface IProductRepository
     {
         public Task<IEnumerable<Product>> LoadAll();
-        public Task StoreAll(IList<Product> products);
+        public Task StoreAll(IEnumerable<Product> products);
 
         public Task<Product> Load(Guid id);
 
